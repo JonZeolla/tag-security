@@ -1,0 +1,14 @@
+.editorconfig
+.github/workflows/sig-sec-check.yml
+.gitignore
+CONTRIBUTING.md
+Makefile
+README.md
+assessments/guide/README.md
+ci/links.sh
+ci/lint.sh
+ci/setup.sh
+ci/sig-sec-check.yml
+ci/spelling.sh
+cspell.json
+docker-compose.yml

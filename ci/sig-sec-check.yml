@@ -1,0 +1,22 @@
+      - name: Setup
+        run: |
+          git fetch origin master:master
+          git diff --name-only master $HEAD > modified
+          echo "these files have changed"
+          cat modified
+      - name: Lint
+        run: |
+          npm install -g markdownlint-cli
+          git fetch origin master:master
+          for file_name in $(git diff --name-only $HEAD master)
+            do
+              if [[ $file_name == *".md" ]]
+              then
+                markdownlint $file_name
+              fi
+          done
+      - name: Spelling
+        run: |
+          npm install -g cspell
+          git fetch origin master:master
+          git diff --name-only master $HEAD | xargs -L1 npx cspell
